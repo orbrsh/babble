@@ -1,0 +1,25 @@
+{
+  "name": "babble",
+  "version": "1.0.0",
+  "description": "Frontend final project",
+  "main": "server/main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orbrsh/babble.git"
+  },
+  "author": "Or Brosh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orbrsh/babble/issues"
+  },
+  "homepage": "https://github.com/orbrsh/babble#readme",
+  "dependencies": {
+    "http-server": "^0.10.0"
+  }
+}
