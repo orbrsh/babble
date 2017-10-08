@@ -19,13 +19,13 @@ http.createServer(function (request, response) {
         '.png': 'image/png',
         '.jpg': 'image/jpg',
         '.gif': 'image/gif',
-        '.wav': 'audio/wav',
+        /* '.wav': 'audio/wav',
         '.mp4': 'video/mp4',
         '.woff': 'application/font-woff',
         '.ttf': 'application/font-ttf',
         '.eot': 'application/vnd.ms-fontobject',
         '.otf': 'application/font-otf',
-        '.svg': 'application/image/svg+xml'
+        '.svg': 'application/image/svg+xml' */
     };
 
     contentType = mimeTypes[extname] || 'application/octet-stream';
