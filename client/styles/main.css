@@ -15,10 +15,12 @@ header img {
     margin-bottom: auto;
     /* padding-bottom: 15%; */
 }
-header h1{
+
+header h1 {
     display: none;
 }
-main{
+
+main {
     width: 82%;
     height: 85.7%;
     padding-left: 18%;
@@ -38,50 +40,55 @@ main form {
     height: 13.3%;
     padding-right: 4.3%;
     background: white;
-
 }
-main form button{
-    float: right;
-    padding-right:4.3%;
-    background: url(/images/submit.png) no-repeat;
 
+main form button {
+    float: right;
+    padding-right: 4.3%;
+    background: url(../images/submit.png) no-repeat;
+    border: none;
+    width: 51px;
+    height: 51px;
 }
 
 
 /* Growable text area */
+
 .Growable {
-	position: relative;
-	border: 1px solid white;
+    position: relative;
+    border: 1px solid white;
     max-height: 300px;
-    width: 84.6%; /* 100-15.4 */
-	overflow: hidden;
-	-webkit-scrollbar: red;
+    width: 84.6%;
+    /* 100-15.4 */
+    overflow: hidden;
+    -webkit-scrollbar: red;
 }
 
 .Growable textarea,
 .Growable pre {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: inherit;
-	font-size: inherit;
-	white-space: pre-wrap;
-	word-wrap: break-word;
-	padding: 0.5em;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: 0.5em;
 }
 
 .Growable textarea {
-	width: 100%;
-	resize: none;
-	border: none;
-
-	position: absolute;
-	top: 0; left: 0;
-	height: 100%;
-	overflow: visible;
+    width: 100%;
+    resize: none;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow: visible;
 }
-/* /Growable text area */
 
+
+/* /Growable text area */
 
 html,
 body {
