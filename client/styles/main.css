@@ -15,10 +15,6 @@ header img {
     margin-bottom: auto;
     /* padding-bottom: 15%; */
 }
-
-h1 {
-    color: green;
-}
 header h1{
     display: none;
 }
@@ -38,7 +34,7 @@ body nav {
 }
 
 main form {
-    width: 82%;
+    /* width: 82%; */
     height: 13.3%;
     padding-right: 4.3%;
     background: white;
@@ -46,14 +42,18 @@ main form {
 }
 main form button{
     float: right;
+    padding-right:4.3%;
+    background: url(/images/submit.png) no-repeat;
+
 }
 
 
 /* Growable text area */
 .Growable {
 	position: relative;
-	border: 1px solid;
-	max-height: 300px;
+	border: 1px solid white;
+    max-height: 300px;
+    width: 84.6%; /* 100-15.4 */
 	overflow: hidden;
 	-webkit-scrollbar: red;
 }
