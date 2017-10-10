@@ -1,3 +1,8 @@
+/*
+* Main server business logic
+*/
+
+'use strict';
 var http = require('http');
 var fs = require('fs');
 var path = require('path');
