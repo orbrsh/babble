@@ -6,8 +6,6 @@
 function Messages() {
     //var messageList = new [];
     this.messageList = [];
-    //this.id = 0;
-
 }
 
 Messages.prototype.addMessages = function (message /* type:Object */ ) {
@@ -39,4 +37,4 @@ Messages.prototype.deleteMessage = function (id /* type:String */ ) {
 };
 
 
-module.exports = Messages;
+//module.exports = Messages;

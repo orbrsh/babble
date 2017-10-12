@@ -6,6 +6,7 @@
 var http = require('http');
 var fs = require('fs');
 var path = require('path');
+var Messages = require('Messages'); // messages-utils.js module
 
 http.createServer(function (request, response) {
     console.log('request ', request.url);
