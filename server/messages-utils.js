@@ -37,4 +37,4 @@ Messages.prototype.deleteMessage = function (id /* type:String */ ) {
 };
 
 
-//module.exports = Messages;
+module.exports = Messages;
