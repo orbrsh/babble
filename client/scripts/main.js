@@ -4,15 +4,16 @@
 
 'use strict';
 
-var Babble = new BabbleClass(); // the only global var.
-
+window.Babble = new BabbleClass(); // the only global var.
 
 function BabbleClass() {
 	//this.http = require('http');
 	this.contentType = "application/json+babble";
 	this.baseServerUrl = "http://localhost:9000/";
+
+	setLocalStorage("", "", "");
+
 	//this.xmlHttp = new XMLHttpRequest();
-	window.alert("sdsdsd");
 }
 
 /*
@@ -22,22 +23,24 @@ function BabbleClass() {
  ***	userInfo.email: string
  *
  */
-BabbleClass.prototype.register = function (userInfo) {
-	var registerString = "name=" + userInfo.name + "&email=" + userInfo.email;
-	var url = this.baseServerUrl + "users";
+BabbleClass.prototype.register = function register (userInfo) {
+	//var registerString = "name=" + userInfo.name + "&email=" + userInfo.email;
+	//localStorage.babble.userInfo = JSON.stringify(userInfo);
+	setLocalStorage("",userInfo.name, userInfo.email);
+	/* var url = this.baseServerUrl + "users";
 	var xmlHttp = new XMLHttpRequest();
 	xmlHttp.onreadystatechange = function () {
 		if (xmlHttp.readyState === xmlHttp.DONE)
-			if (xmlHttp.status === 201) {  // registration completed
+			if (xmlHttp.status === 201) { // registration completed
 				var response = JSON.parse(xmlHttp.responseText);
-				window.alert("registration complete "+ JSON.stringify(response));
+				window.alert("registration complete " + JSON.stringify(response));
 			} else
-				BabbleClass.prototype.errorHandler(xmlHttp.status);
+				errorHandler(xmlHttp.status);
 
 	}
 	xmlHttp.open('POST', url, true);
 	xmlHttp.setRequestHeader('Content-Type', this.contentType);
-	xmlHttp.send(registerString);
+	xmlHttp.send(registerString); */
 };
 
 /*
@@ -46,7 +49,7 @@ BabbleClass.prototype.register = function (userInfo) {
  **	callback function
  *
  */
-BabbleClass.prototype.getMessages = function (counter, callback) {
+BabbleClass.prototype.getMessages = function getMessages (counter, callback) {
 	// GET		/messages?counter=XX	(~ /poll)
 	//var registerString = "name=" + userInfo.name + "&email=" + userInfo.email;
 	var url = this.baseServerUrl + "messages" + "?counter=" + counter;
@@ -55,11 +58,12 @@ BabbleClass.prototype.getMessages = function (counter, callback) {
 		if (xmlHttp.readyState === xmlHttp.DONE)
 			if (xmlHttp.status === 200) {
 				var response = JSON.parse(xmlHttp.responseText);
-				window.alert("messages recieved complete "+ JSON.stringify(response));
+				callback(response);
+				//window.alert("messages recieved complete " + JSON.stringify(response));
 			} else
-				BabbleClass.prototype.errorHandler(xmlHttp.status);
+				errorHandler(xmlHttp.status);
 
-	}
+	};
 	xmlHttp.open('GET', url, true);
 	xmlHttp.setRequestHeader('Content-Type', this.contentType);
 	xmlHttp.send(null);
@@ -72,7 +76,7 @@ BabbleClass.prototype.getMessages = function (counter, callback) {
  **	callback function
  *
  */
-BabbleClass.prototype.postMessage = function (message, callback) {
+BabbleClass.prototype.postMessage = function postMessage (message, callback) {
 	// POST		/messages	(~ new message)
 	// {name:String, email:String, message:String, timestamp:Number(ms)} (request body)
 	//var registerString = "name=" + userInfo.name + "&email=" + userInfo.email;
@@ -82,11 +86,12 @@ BabbleClass.prototype.postMessage = function (message, callback) {
 		if (xmlHttp.readyState === xmlHttp.DONE)
 			if (xmlHttp.status === 200) {
 				var response = JSON.parse(xmlHttp.responseText);
-				window.alert("posting complete "+ JSON.stringify(response));
+				callback(response);
+				//window.alert("posting complete " + JSON.stringify(response));
 			} else
-				BabbleClass.prototype.errorHandler(xmlHttp.status);
+				errorHandler(xmlHttp.status);
 
-	}
+	};
 	xmlHttp.open('POST', url, true);
 	xmlHttp.setRequestHeader('Content-Type', this.contentType);
 	xmlHttp.send(JSON.stringify(message));
@@ -99,19 +104,20 @@ BabbleClass.prototype.postMessage = function (message, callback) {
  **	callback function
  *
  */
-BabbleClass.prototype.deleteMessage = function (id, callback) {
+BabbleClass.prototype.deleteMessage = function deleteMessage (id, callback) {
 	// DELETE	/messages/:id	(~ delete one message)
 	var url = this.baseServerUrl + "messages/" + id;
-	var xmlHttp = new this.http.XMLHttpRequest();
+	var xmlHttp = new XMLHttpRequest();
 	xmlHttp.onreadystatechange = function () {
 		if (xmlHttp.readyState === xmlHttp.DONE)
 			if (xmlHttp.status === 200) {
 				var response = JSON.parse(xmlHttp.responseText);
-				window.alert("delete id "+id+" complete "+ JSON.stringify(response));
+				callback(response);
+				//window.alert("delete id " + id + " complete " + JSON.stringify(response));
 			} else
-				BabbleClass.prototype.errorHandler(xmlHttp.status);
+				errorHandler(xmlHttp.status);
 
-	}
+	};
 	xmlHttp.open('DELETE', url, true);
 	xmlHttp.setRequestHeader('Content-Type', this.contentType);
 	xmlHttp.send(null);
@@ -122,7 +128,7 @@ BabbleClass.prototype.deleteMessage = function (id, callback) {
  **	callback function
  *
  */
-BabbleClass.prototype.getStats = function (callback) {
+BabbleClass.prototype.getStats = function getStats (callback) {
 	// GET		/stats	(~ get statistics)
 	// {users:Number , messages:Number}		(response body)
 	var url = this.baseServerUrl + "stats";
@@ -131,18 +137,19 @@ BabbleClass.prototype.getStats = function (callback) {
 		if (xmlHttp.readyState === xmlHttp.DONE)
 			if (xmlHttp.status === 200) {
 				var response = JSON.parse(xmlHttp.responseText);
-				window.alert("stats recieved complete "+ JSON.stringify(response));
+				callback(response);
+				//window.alert("stats recieved complete " + JSON.stringify(response));
 			} else
-				BabbleClass.prototype.errorHandler(xmlHttp.status);
+				errorHandler(xmlHttp.status);
 
-	}
+	};
 	xmlHttp.open('GET', url, true);
 	xmlHttp.setRequestHeader('Content-Type', this.contentType);
 	xmlHttp.send(null);
 
 };
 
-BabbleClass.prototype.errorHandler = function (error) {
+function errorHandler (error) {
 	switch (error) {
 		case 400:
 
@@ -151,7 +158,18 @@ BabbleClass.prototype.errorHandler = function (error) {
 		default:
 			break;
 	}
-};
+}
+
+function setLocalStorage(curMsg, usrName, usrEmail)
+{
+	localStorage.babble = JSON.stringify({
+		currentMessage: curMsg,
+		userInfo: {
+			name: usrName,
+			email: usrEmail
+		}
+	});
+}
 
 /* Babble.register(userInfo: Object)
 Babble.getMessages(counter: Number, callback: Function)
