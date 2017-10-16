@@ -8,8 +8,8 @@
   },
   "scripts": {
     "testServer": "mocha test/server",
-    "testClient": "http-server test/client",
-    "Fulltest": "http-server test/client -p 8081 & mocha test/server",
+    "testClient": "http-server test/client -o -p 8081",
+    "Fulltest": "http-server test/client -o -p 8081 & mocha test/server",
     "test": "npm run testClient & npm run testServer",
     "fileServer": "http-server ./client -p 8080",
     "apiServer":  "node server/main.js",
